@@ -2,7 +2,18 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import FormattedDate from '../components/FormattedDate.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+
+const recentPosts = posts.slice(0, 2); // Fetch and slice the two most recent posts
+console.log(posts);
+
+console.log(recentPosts);
 ---
 
 <!doctype html>
@@ -12,39 +23,59 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 	</head>
 	<body class="font-bitter bg-cyan-200">
 		<Header />
-		<main class="w-full">
-      		<div class="flex flex-wrap justify-center columns-3">
+		<main class="w-3/5 pt-1">
+      		<div class="flex flex-wrap justify-center">
           		<div class="border-black border-2 bg-orange-300 p-6 shadow-[8px_8px_0px_rgba(0,0,0,1)] m-2">
-         			<h1 class="font-hammersmith">🧑‍🚀 Hello, Astronaut!</h1>
-         			<p>
+         			<h1 class="font-hammersmith ml-1">🧑‍🚀 Hello, Astronaut!</h1>
+         			<p class="ml-1">
             				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
             				template serves as a lightweight, minimally-styled starting point for anyone looking to build
             				a personal website, blog, or portfolio with Astro.
          			</p>
-         			<p>
+         			<p class="ml-1">
             				This template comes with a few integrations already configured in your
             				<code>astro.config.mjs</code> file. You can customize your setup with
             				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
             				React, or Vue to your project.
          			</p>
     			</div>
-                <div class="flex">
-                    <div class="border-black border-2 bg-green-300 p-6 shadow-[8px_8px_0px_rgba(0,0,0,1)] m-4">
-                 			<h1 class="font-hammersmith">🧑‍🚀 Hello, Astronaut!</h1>
-                 			<p>
-                    				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-                    				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-                    				a personal website, blog, or portfolio with Astro.
-                 			</p>
-              		</div>
-                    <div class="border-black border-2 bg-red-300 p-6 shadow-[8px_8px_0px_rgba(0,0,0,1)] m-4">
-                 			<h1 class="font-hammersmith">🧑‍🚀 Hello, Astronaut!</h1>
-                 			<p>
-                    				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-                    				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-                    				a personal website, blog, or portfolio with Astro.
-                 			</p>
-              		</div
+                <div class="flex flex-wrap border-black border-2 bg-orange-300 p-6 shadow-[8px_8px_0px_rgba(0,0,0,1)] m-2">
+          		<div class="w-full">
+                        <h1 class="font-hammersmith text-4xl ml-1">Recent Posts</h1>
+                    </div>
+                    <div class="flex justify-center ">
+                        {
+                        recentPosts.map((post) => (
+    						<div class="border-black border-2 bg-green-300 p-6 m-2 w-1/2">
+                                <div class="block">
+                                    <article class="w-full h-1/2">
+                                        <figure class="w-full h-1/2 m-auto">
+                                            <h1 class="text-[32px] mb-1 text-center font-hammersmith">{post.data.title}</h1>
+                                            <h2 class="text-center text-sm mb-2">
+                                                <FormattedDate date={post.data.pubDate} />
+                                            </h2>
+                                            <img
+                                            src={post.data.heroImage}
+                                            alt="thumbnail"
+                                            class="w-1/2 h-full object-cover m-auto"
+                                            />
+                                        </figure>
+                                        <div class="px-6 pt-5 text-left h-full">
+                                            <p class="text-base mb-4 line-clamp-4">
+                                            {post.data.description}
+                                            </p>
+                                            <div class="flex justify-end ">
+                                                <a href={`/blog/${post.slug}/`} class="font-bitter font-bold text-black cursor-pointer border-black border-2 p-2.5 bg-[#A6FAFF] hover:text-black hover:bg-[#79F7FF] hover:shadow-[2px_2px_0px_rgba(0,0,0,1)] active:bg-[#00E1EF]">
+                                                    Read More
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </div>
+                            </div>
+                            ))
+                        }
+                        </div>
                 </div>
             </main>
 		<Footer />
