@@ -1,0 +1,18 @@
+---
+import { storyblokEditable, renderRichText } from '@storyblok/astro'
+import Layout from '../layouts/BlogPost.astro'
+import { Debug } from "astro:components"
+
+const { blok, updatedDate } = Astro.props
+const content = renderRichText(blok.content)
+---
+
+<Layout
+	title={blok.title}
+	description={blok.description}
+	heroImage={blok.image.filename}
+	pubDate={blok.published_at}
+	updatedDate={updatedDate}
+	content={content}
+  {...storyblokEditable(blok)}
+/>

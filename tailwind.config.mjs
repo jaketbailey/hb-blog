@@ -8,6 +8,12 @@ export default {
         bitter: ['"Bitter"', "serif"],
         hammersmith: ['"Hammersmith One"', "sans-serif"],
       },
+      minHeight: {
+        "1/4-screen": "25svh",
+        "2/5-screen": "40svh",
+        "1/2-screen": "50svh",
+        "3/4-screen": "75svh",
+      },
     },
   },
   plugins: [],
