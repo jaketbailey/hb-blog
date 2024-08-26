@@ -1,6 +1,7 @@
  ---
 import HeaderLink from './HeaderLink.astro';
 import { SITE_TITLE } from '../consts';
+import HamburgerMenu from './Hamburger';
 ---
 
 <header class="bg-white border-b-2 border-black mb-2">
@@ -10,10 +11,14 @@ import { SITE_TITLE } from '../consts';
     			<a href="/" class="no-underline font-hammersmith font-bold text-3xl text-black bg-violet-300 hover:bg-violet-3S00 hover:text-black border-2 border-black p-1">{SITE_TITLE}</a>
     		</h2>
     		<div class="flex">
-    			<HeaderLink href="/" class="px-2 py-4 text-black border-b-4 border-transparent hover:border-black">Home</HeaderLink>
-    			<HeaderLink href="/projects" class="px-2 py-4 text-black border-b-4 border-transparent hover:border-black">Projects</HeaderLink>
-    			<HeaderLink href="/blog" class="px-2 py-4 text-black border-b-4 border-transparent hover:border-black">Blog</HeaderLink>
-    			<HeaderLink href="/about" class="px-2 py-4 text-black border-b-4 border-transparent hover:border-black">About</HeaderLink>
+    			<HeaderLink href="/" class="hidden xl:block px-2 py-4 text-black border-b-4 border-transparent hover:border-black">Home</HeaderLink>
+    			<HeaderLink href="/projects" class="hidden xl:block px-2 py-4 text-black border-b-4 border-transparent hover:border-black">Projects</HeaderLink>
+    			<HeaderLink href="/blog" class="hidden xl:block px-2 py-4 text-black border-b-4 border-transparent hover:border-black">Blog</HeaderLink>
+    			<HeaderLink href="/about" class="hidden xl:block px-2 py-4 text-black border-b-4 border-transparent hover:border-black">About</HeaderLink>
+
+                <div class="block xl:hidden bg-[#A6FAFF] hover:bg-[#79F7FF] active:bg-[#53f2fc] m-auto border-black border-2 focus:outline-none focus:shadow-[2px_2px_0px_rgba(0,0,0,1)] mx-2 my-4">
+                    <HamburgerMenu client:load />
+                </div>
 
                 <a href="https://instagram.com" target="_blank" class="ml-5 mx-1 my-auto border-black border-2 bg-[#A6FAFF] hover:bg-[#79F7FF] active:bg-[#53f2fc] w-10 h-10">
                     <svg
