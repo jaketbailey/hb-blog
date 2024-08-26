@@ -3,3 +3,4 @@
 
 export const SITE_TITLE = "HB Film & Media";
 export const SITE_DESCRIPTION = "HB Film & Media!";
+export const INSTAGRAM_URL = "https://www.instagram.com/heidielizabethbailey";
