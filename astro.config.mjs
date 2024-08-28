@@ -24,6 +24,7 @@ export default defineConfig({
         about: "storyblok/About",
         projectsList: "storyblok/ProjectsList",
         blogPostList: "storyblok/BlogPostList",
+        Home: "storyblok/Home",
         page: "storyblok/Page",
       },
       apiOptions: {
