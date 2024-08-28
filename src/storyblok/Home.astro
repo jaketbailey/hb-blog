@@ -4,7 +4,6 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
-import { getCollection } from 'astro:content';
 import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro'
 import { useStoryblokApi } from '@storyblok/astro'
 
@@ -43,7 +42,7 @@ const getLatestPosts = async () => {
       date: new Date(story.published_at).toLocaleDateString("en-GB", {dateStyle: "full"}),
       description: story.content.description,
       slug: story.full_slug,
-  		image: story.content.image,
+      image: story.content.image,
     }
   })
 
