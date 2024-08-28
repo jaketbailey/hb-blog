@@ -50,16 +50,14 @@ const getLatestPosts = async () => {
   return allPosts.slice(0, 2);
 }
 
-
 const latestProject = await getLatestProject();
 const latestPosts = await getLatestPosts();
-
 ---
 
 <main class="w-full xl:w-3/5 pt-1">
 <div class="flex flex-wrap justify-center">
   		<div class="w-full flex justify-center flex-wrap xl:flex-nowrap">
-            <div class="border-black border-2 bg-violet-300 p-6 shadow-[8px_8px_0px_rgba(0,0,0,1)] m-2 xl:w-3/5">
+            <div class="border-black border-2 bg-violet-300 p-6 shadow-[8px_8px_0px_rgba(0,0,0,1)] mb-2 w-full xl:w-3/5">
      			<h1 class="font-hammersmith ml-1 text-xl md:text-4xl">🧑‍🚀 Hello, Astronaut!</h1>
      			<p class="ml-1 text-sm md:text-base">
         				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
@@ -73,7 +71,7 @@ const latestPosts = await getLatestPosts();
         				React, or Vue to your project.
      			</p>
             </div>
-            <div class="border-black border-2 bg-violet-300 p-6 shadow-[8px_8px_0px_rgba(0,0,0,1)] m-2 xl:w-2/5 flex flex-wrap">
+            <div class="border-black border-2 bg-violet-300 p-6 shadow-[8px_8px_0px_rgba(0,0,0,1)] m-2 w-full xl:w-2/5 flex flex-wrap">
                 <h1 class="font-hammersmith ml-1 text-xl md:text-4xl">Latest Project</h1>
                 <div class="border-black border-2 bg-white p-6 m-2 w-full ">
                     <div class="block">
@@ -104,7 +102,7 @@ const latestPosts = await getLatestPosts();
                 </div>
             </div>
         </div>
-        <div class="flex flex-wrap border-black border-2 bg-violet-300 p-6 shadow-[8px_8px_0px_rgba(0,0,0,1)] m-2">
+        <div class="flex flex-wrap border-black border-2 bg-violet-300 p-6 shadow-[8px_8px_0px_rgba(0,0,0,1)] mt-2">
   		<div class="w-full">
                 <h1 class="font-hammersmith text-4xl ml-1">Recent Posts</h1>
             </div>
